@@ -28,11 +28,23 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+  padding: 10px;
+  border: 10px;
+  height: 60px;
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  position: relative;
+  height: 60%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 20%;
 }
