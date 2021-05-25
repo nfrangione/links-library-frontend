@@ -8,7 +8,7 @@ export default class EntryCard extends Component {
     render() {
         return (
             
-            <div className="entry_card" onClick={(e)=>this.props.onClick(e, this.props.entry_item)}>
+            <div className="entry_card" onClick={()=>this.props.onClick( this.props.entry_item)}>
                 <div className="img_img">
                     <img src={this.props.entry_item.image_url}></img>
                 </div>

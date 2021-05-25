@@ -114,7 +114,7 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} /> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} user={this.state.user} /> : <Redirect to="/" />}
                 
             </Route>
             
