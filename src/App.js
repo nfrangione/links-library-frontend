@@ -5,7 +5,6 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
-import Show from './pages/Show'
 import NavBar from './components/NavBar'
 
 import './App.css';
@@ -19,12 +18,11 @@ class App extends Component {
     entry_items: [],
     user: {},
     loggedIn: false,
-    entryType: "all",
     token: null
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('token')
+    let token = localStorage.getItem('token')
     if (token) {
       this.setState({token: token})
     }
@@ -77,7 +75,8 @@ class App extends Component {
         }
         this.setState({
           user: createdUser,
-          loggedIn: true
+          loggedIn: true,
+          token: data.jwt
         })
         this.getEntries()
       }
@@ -85,7 +84,7 @@ class App extends Component {
   }
 
   getEntries = () => {
-    fetch(`${baseURL}entry_items`, {
+    fetch(`${baseURL}entry_items/`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${this.state.token}`
@@ -102,12 +101,10 @@ class App extends Component {
     localStorage.clear()
     this.setState({
       user: {},
-      loggedIn: false,
-      entry_items: []
+      loggedIn: false
     })
+    localStorage.clear()
   }
-
-  
 
   render () {
     return (
@@ -117,12 +114,8 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entries={this.state.entries}/> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} /> : <Redirect to="/" />}
                 
-            </Route> 
-
-            <Route path="/entry_items/:id">
-               <Show />
             </Route>
             
             <Route path="/register">

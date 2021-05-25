@@ -12,7 +12,7 @@ class NavBar extends React.Component {
                     <h2>Link's Library</h2>
                 </div>
                 <div className="nav-links">
-                    <Link to="/entry_items" className="nav-link">Browse</Link>
+                    <Link to="/entry_items" className="nav-link" hidden={!this.props.loggedIn}>Browse</Link>
                     <Link to="/register" className="nav-link" hidden={this.props.loggedIn}>Register</Link>
                     <Link to="/" className="nav-link" hidden={this.props.loggedIn} >Login</Link>
                     <Link to="/" className="nav-link" hidden={!this.props.loggedIn} onClick={(e) => this.props.handleLogout(e)}>Logout</Link>

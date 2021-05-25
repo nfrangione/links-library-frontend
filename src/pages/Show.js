@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Show extends Component {
-    render() {
-        return (
-            <div className="home">
-                
-            </div>
-        )
-    }
+
+const Show = (props) => {
+    // console.log(props)
+    return (
+        <div>
+            
+        </div>
+    )
 }
+
+export default Show;
+
