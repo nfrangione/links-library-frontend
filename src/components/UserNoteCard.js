@@ -12,7 +12,7 @@ export default class UserNoteCard extends Component {
         let entryForNote = this.findEntryMatch(this.props.note.entry_item_id)
         return (
             
-            <div className="entry-card" onClick={(e)=>this.props.onClick(e, entryForNote)}>
+            <div className="entry-card" >
                 <div className="item_display">
                     <img src={entryForNote.image_url}></img>
                     <h3 >{entryForNote.name} ({entryForNote.category}) </h3>
