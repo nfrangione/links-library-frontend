@@ -42,15 +42,15 @@ const FormLogin = ({loginUser}) => {
         <div className="login-container">
             <div><h3>Login:</h3>
                 <form className="validate-form" onSubmit={handleLogin}> 
-                    <label htmlFor="username">Username: {errors.username && <span className="error-message">{errors.username}</span>}</label>
+                    <label htmlFor="username">Username: {errors.username && <span className="error-message">{errors.username}</span>}</label><br/>
                         <input
                             type="text"
                             name="username"
                             placeholder="Enter Username"
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
-                        />
-                    <label htmlFor="password">Password: {errors.password && <span className="error-message">{errors.password}</span>}</label>
+                        /><br/><br/>
+                    <label htmlFor="password">Password: {errors.password && <span className="error-message">{errors.password}</span>}</label><br/>
                         <input
                             type="password"
                             name="password"

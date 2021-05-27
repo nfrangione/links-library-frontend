@@ -67,7 +67,7 @@ const FormRegister = ({registerUser}) => {
                         placeholder="Enter Username"
                         value={username}
                         onChange={(event) => setUsername(event.target.value)}
-                    />
+                    /><br/><br/>
                     
                     <label htmlFor="password">Password: {errors.password && <span className="error-message">{errors.password}</span>}</label>
                     <input
@@ -76,7 +76,7 @@ const FormRegister = ({registerUser}) => {
                         placeholder="Enter Password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                    />
+                    /><br/><br/>
                     
                     <label htmlFor="password2">Confirm Password: {errors.password2 && <span className="error-message">{errors.password2}</span>}</label>
                     <input

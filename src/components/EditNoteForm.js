@@ -11,7 +11,7 @@ const FormEditReview = ({noteEdit, entry, editSubmit, hideEditForm}) => {
             entry_id: entry.id,
             user_id: noteEdit.user_id
         }
-        editSubmit(noteSubmission,e)
+        editSubmit(noteSubmission, e)
         hideEditForm()
     }
     return (

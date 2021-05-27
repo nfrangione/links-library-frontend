@@ -10,7 +10,6 @@ class Home extends React.Component {
     }
 
     onClick = (entry_item) => {
-        //e.preventDefault()
         fetch("http://localhost:3000/entry_items", {
             method: 'POST',
             headers:  {
@@ -31,11 +30,14 @@ class Home extends React.Component {
         fetch(`https://botw-compendium.herokuapp.com/api/v2/entry/${entry.original_id}`, {
             method: 'GET',
             headers:  {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             }
         })
         .then(res => res.json())
-        .then(entryData => this.setState({full_entry: entryData["data"]}))
+        .then(entryData => {
+            this.setState({full_entry: entryData["data"]})
+        })
     }
 
     submitForm = (note, e) => {
@@ -96,7 +98,7 @@ class Home extends React.Component {
         //console.log(Object.keys(this.state.entry_show).length > 0)
         if (Object.keys(this.state.entry_show).length > 0) {
             //console.log("I am true")
-            return <div className="show-card"><ShowCard user={this.props.user} entry={this.state.full_entry} entry_show={this.state.entry_show} backHome={this.backHome} submitForm={this.submitForm} editSubmit={this.editSubmit} deleteClick={this.deleteClick}/></div>
+            return <div className="show-card"><ShowCard user={this.props.user} entry={this.state.full_entry} category={this.state.entry_show.category} entry_show={this.state.entry_show} backHome={this.backHome} submitForm={this.submitForm} editSubmit={this.editSubmit} deleteClick={this.deleteClick}/></div>
         }
         else {
             return <div className="entry-container">{this.props.entry_items.map(entry_item => {return <EntryCard key={entry_item.name} entry_item={entry_item} token={this.props.token} handleShow={this.handleShow} onClick={this.onClick}/>})}</div>

@@ -63,8 +63,8 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      if(data.error){
-        alert(data.error)
+      if(data.message){
+        alert(data.message)
       }
       else {
         localStorage.setItem("token", data.jwt)
@@ -96,6 +96,8 @@ class App extends Component {
     })
   }
 
+
+
   handleLogout = (e) => {
     e.preventDefault()
     localStorage.clear()
@@ -122,8 +124,8 @@ class App extends Component {
                 {this.state.loggedIn ? <Redirect to="/entry_items" /> : <Register registerUser={this.registerUser}/>}
             </Route>
             
-            <Route path="/user">
-                <Profile />
+            <Route path="/profile">
+                {this.state.loggedIn ? <Profile user={this.state.user}/> : <Redirect to="/" />}
             </Route>
 
             <Route exact path="/">

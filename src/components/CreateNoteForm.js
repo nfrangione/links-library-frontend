@@ -17,7 +17,7 @@ const CreateNoteForm = ({entry, submitForm, handleShowForm, user}) => {
 
   return (
     <div className="review-container">
-        <h1>Entry Item: {entry.name}</h1>
+        <h3>Entry Item: {entry.name}</h3>
         <div className="form-container">
             <form onSubmit={handleSubmit}>
             <label htmlFor="note">
@@ -27,7 +27,7 @@ const CreateNoteForm = ({entry, submitForm, handleShowForm, user}) => {
                 name="note"
                 value={note}
                 onChange={(event) => setNote(event.target.value)}
-                /><br/><br/>
+                /><br/>
             </label>
             <input type="submit" value="Submit" />
             </form>
