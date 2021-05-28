@@ -18,13 +18,17 @@ class App extends Component {
     entry_items: [],
     user: {},
     loggedIn: false,
-    token: null
+    token: null,
+    user_notes: [],
+    user_entries: []
   }
 
   componentDidMount() {
     let token = localStorage.getItem('token')
     if (token) {
       this.setState({token: token})
+      this.getEntries()
+      this.getUserNotes()
     }
   }
 
@@ -68,7 +72,8 @@ class App extends Component {
       }
       else {
         localStorage.setItem("token", data.jwt)
-        //console.log(data.jwt)
+        this.setState({token: data.jwt})
+        this.getEntries()
         let createdUser = {
           username: data.user.username,
           id: data.user.id
@@ -76,9 +81,11 @@ class App extends Component {
         this.setState({
           user: createdUser,
           loggedIn: true,
-          token: data.jwt
+          token: data.jwt,
+          user_notes: data.user.user_notes,
+          user_entries: data.user.entry_items,
         })
-        this.getEntries()
+        
       }
     })
   }
@@ -87,7 +94,7 @@ class App extends Component {
     fetch(`${baseURL}entry_items/`, {
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${this.state.token}`
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
       }
     })
     .then(r => r.json())
@@ -96,14 +103,75 @@ class App extends Component {
     })
   }
 
+  getUserNotes=()=>{
+    fetch(`http://localhost:3000/api/v1/profile`, {
+        method: "GET",
+        headers:  {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+      let userGet = {
+        username: data.user.username,
+        id: data.user.id
+      }
+      this.setState({loggedIn: true})
+      this.setState({user: userGet})
+      this.setState({user_entries: data.user.entry_items, user_notes: data.user.user_notes})
+    })
+  }
 
+  submitUserNote = (submitNote) => {
+    fetch(`http://localhost:3000/user_notes/${submitNote.id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(submitNote)
+    })
+    .then(res => res.json())
+    .then(note => {
+      this.getUserNotes()
+      let newUserNotes = this.state.user_notes.map(currentNote => currentNote.id === note.id ? note:currentNote)
+      this.setState({user_notes: newUserNotes})
+      
+      
+    })
+    this.getEntries()
+  }
+
+  submitCreateNote = (note) => {
+    fetch(`http://localhost:3000/user_notes`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(note)
+    })
+    .then(res => res.json())
+    this.getUserNotes()
+    this.getEntries()
+  }
+
+  
 
   handleLogout = (e) => {
     e.preventDefault()
-    localStorage.clear()
+    
     this.setState({
       user: {},
-      loggedIn: false
+      loggedIn: false,
+      user_notes: [],
+      user_entries: [],
+      token: null,
+      entry_items: []
     })
     localStorage.clear()
   }
@@ -116,7 +184,7 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} user={this.state.user} /> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} submitCreateNote={this.submitCreateNote}/> : <Redirect to="/" />}
                 
             </Route>
             
@@ -125,7 +193,7 @@ class App extends Component {
             </Route>
             
             <Route path="/profile">
-                {this.state.loggedIn ? <Profile user={this.state.user}/> : <Redirect to="/" />}
+                {this.state.loggedIn ? <Profile user={this.state.user} user_notes={this.state.user_notes} user_entries={this.state.user_entries} submitUserNote={this.submitUserNote} /> : <Redirect to="/" />}
             </Route>
 
             <Route exact path="/">

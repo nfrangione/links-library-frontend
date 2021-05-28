@@ -5,8 +5,7 @@ import ShowCard from '../components/ShowCard'
 class Home extends React.Component {
     state = {
         entry_show: {},
-        full_entry: {},
-        entry_items: []
+        full_entry: {}
     }
 
     onClick = (entry_item) => {
@@ -41,41 +40,36 @@ class Home extends React.Component {
     }
 
     submitForm = (note, e) => {
-        //e.preventDefault()
-        fetch(`http://localhost:3000/user_notes`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify(note)
-        })
-        .then(res => res.json())
-        .then(note => {
-            this.onClick(this.state.entry_show)
-        })
+        e.preventDefault()
+        
+        this.props.submitCreateNote(note)
+        this.onClick(this.state.entry_show)
+        
+        // fetch(`http://localhost:3000/user_notes`, {
+        //     method: 'POST',
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Accept": "application/json",
+        //         "Authorization": `Bearer ${localStorage.getItem('token')}`
+        //     },
+        //     body: JSON.stringify(note)
+        // })
+        // .then(res => res.json())
+        // .then(note => {
+        //     this.onClick(this.state.entry_show)
+        // })
     }
 
     editSubmit = (updateNote, e) => {
-        //e.preventDefault()
-        fetch(`http://localhost:3000/user_notes/${updateNote.id}`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify(updateNote)
-        })
-        .then(res => res.json())
-        .then(note => {
-            this.onClick(this.state.entry_show)
-        })
+        e.preventDefault()
+        this.props.submitUserNote(updateNote)
+        this.onClick(this.state.entry_show)
     }
 
+    
+
     deleteClick = (e, deleteNote) => {
-        // e.stopPropagation()
+        e.stopPropagation()
         fetch(`http://localhost:3000/user_notes/${deleteNote.id}`, {
           method: 'DELETE',
           headers: {
