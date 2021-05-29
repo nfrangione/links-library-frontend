@@ -11,7 +11,6 @@ export default class Profile extends Component {
     
     editClick = (note, entry) => {
         //e.preventDefault()
-        console.log(note)
         this.setState({noteEdit: note, entryEdit: entry})
         this.toggleEdit()
     }
@@ -19,14 +18,11 @@ export default class Profile extends Component {
     toggleEdit = () => {
         this.setState({editForm: !this.state.editForm})
     }
-
     
     
     render() {
         return (
             <div>
-                
-                
                 <div>
                     <h1>@{this.props.user.username}'s Notes Page</h1>
                 </div>
@@ -36,7 +32,6 @@ export default class Profile extends Component {
                 <div className="entry-container">
                     {this.props.user_notes.map((note)=> <UserNoteCard key={note.id} note={note} user_entries={this.props.user_entries} editClick={this.editClick}/>)}  
                 </div>
-                
             </div>
         )
     }

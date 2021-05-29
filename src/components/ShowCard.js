@@ -22,7 +22,7 @@ export default class ShowCard extends Component {
     }
 
     editClick = (e, note) => {
-        e.preventDefault();
+        //e.preventDefault();
         this.setState({editForm: !this.state.editForm})
         this.setState({note})
     }

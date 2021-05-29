@@ -20,9 +20,11 @@ class Home extends React.Component {
         })
         .then(res => res.json())
         .then(entry => {
+            console.log(entry)
             this.setState({entry_show: entry});
             this.getDataEntry(entry)
         })
+        this.props.updateProfile()
     }
 
     getDataEntry = (entry) => {
@@ -39,31 +41,49 @@ class Home extends React.Component {
         })
     }
 
-    submitForm = (note, e) => {
+    submitForm = (submitNote, e) => {
+        // e.preventDefault()
+        // this.props.submitCreateNote(submitNote)
+       
+        //this.showEntry()
         e.preventDefault()
-        
-        this.props.submitCreateNote(note)
-        this.onClick(this.state.entry_show)
-        
-        // fetch(`http://localhost:3000/user_notes`, {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Accept": "application/json",
-        //         "Authorization": `Bearer ${localStorage.getItem('token')}`
-        //     },
-        //     body: JSON.stringify(note)
-        // })
-        // .then(res => res.json())
-        // .then(note => {
-        //     this.onClick(this.state.entry_show)
-        // })
+        fetch(`http://localhost:3000/user_notes`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(submitNote)
+        })
+        .then(res => res.json())
+        .then(note => {
+            console.log(note)
+            this.onClick(this.state.entry_show) 
+        })
+        //this.props.updateProfile()
     }
 
     editSubmit = (updateNote, e) => {
         e.preventDefault()
-        this.props.submitUserNote(updateNote)
-        this.onClick(this.state.entry_show)
+        //console.log(updateNote)
+        //this.props.submitUserNote(updateNote)
+        //this.onClick(this.state.entry_show)
+        fetch(`http://localhost:3000/user_notes/${updateNote.id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(updateNote)
+        })
+        .then(res => res.json())
+        .then(note => {
+            console.log(note)
+            this.onClick(this.state.entry_show)
+        })
+
     }
 
     
@@ -88,11 +108,12 @@ class Home extends React.Component {
     
 
     renderContent = () => {
+        //this.onClick(this.state.entry_show)
         //console.log(Object.keys(this.state.entry_show).length)
         //console.log(Object.keys(this.state.entry_show).length > 0)
         if (Object.keys(this.state.entry_show).length > 0) {
             //console.log("I am true")
-            return <div className="show-card"><ShowCard user={this.props.user} entry={this.state.full_entry} category={this.state.entry_show.category} entry_show={this.state.entry_show} backHome={this.backHome} submitForm={this.submitForm} editSubmit={this.editSubmit} deleteClick={this.deleteClick}/></div>
+            return <div className="show-card"><ShowCard user={this.props.user} entry_items={this.props.entry_items} entry={this.state.full_entry} category={this.state.entry_show.category} entry_show={this.state.entry_show} backHome={this.backHome} submitForm={this.submitForm} editSubmit={this.editSubmit} deleteClick={this.deleteClick}/></div>
         }
         else {
             return <div className="entry-container">{this.props.entry_items.map(entry_item => {return <EntryCard key={entry_item.name} entry_item={entry_item} token={this.props.token} handleShow={this.handleShow} onClick={this.onClick}/>})}</div>

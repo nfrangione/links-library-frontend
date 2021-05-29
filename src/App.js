@@ -91,6 +91,7 @@ class App extends Component {
   }
 
   getEntries = () => {
+    console.log("GOT ENTRIES")
     fetch(`${baseURL}entry_items/`, {
       method: "GET",
       headers: {
@@ -104,6 +105,7 @@ class App extends Component {
   }
 
   getUserNotes=()=>{
+    console.log("GOT USER NOTES")
     fetch(`http://localhost:3000/api/v1/profile`, {
         method: "GET",
         headers:  {
@@ -114,6 +116,7 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data => {
+      console.log(data)
       let userGet = {
         username: data.user.username,
         id: data.user.id
@@ -123,6 +126,8 @@ class App extends Component {
       this.setState({user_entries: data.user.entry_items, user_notes: data.user.user_notes})
     })
   }
+
+  
 
   submitUserNote = (submitNote) => {
     fetch(`http://localhost:3000/user_notes/${submitNote.id}`, {
@@ -137,34 +142,21 @@ class App extends Component {
     .then(res => res.json())
     .then(note => {
       this.getUserNotes()
-      let newUserNotes = this.state.user_notes.map(currentNote => currentNote.id === note.id ? note:currentNote)
-      this.setState({user_notes: newUserNotes})
-      
-      
+      this.getEntries()
+      //let newUserNotes = this.state.user_notes.map(currentNote => currentNote.id === note.id ? note:currentNote)
+      //this.setState({user_notes: newUserNotes})
     })
-    this.getEntries()
+    
+    
   }
 
-  submitCreateNote = (note) => {
-    fetch(`http://localhost:3000/user_notes`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify(note)
-    })
-    .then(res => res.json())
+  updateProfile = () => {
     this.getUserNotes()
-    this.getEntries()
   }
-
-  
 
   handleLogout = (e) => {
     e.preventDefault()
-    
+    localStorage.clear()
     this.setState({
       user: {},
       loggedIn: false,
@@ -173,7 +165,7 @@ class App extends Component {
       token: null,
       entry_items: []
     })
-    localStorage.clear()
+    
   }
 
   render () {
@@ -184,7 +176,7 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} submitCreateNote={this.submitCreateNote}/> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile}  /> : <Redirect to="/" />}
                 
             </Route>
             
