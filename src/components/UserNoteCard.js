@@ -24,7 +24,6 @@ export default class UserNoteCard extends Component {
                 </div>
                 <div>
                     <button onClick={(e) => this.props.editClick(this.props.note, entryForNote)}>Edit</button>
-                    <button onClick={(e) => this.props.deleteClick(e, this.props.note)}>Delete</button>
                 </div>
                 <br/>
             </div>

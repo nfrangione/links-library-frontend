@@ -1,6 +1,7 @@
 import React from 'react'
 import EntryCard from '../components/EntryCard'
 import ShowCard from '../components/ShowCard'
+import Search from '../components/Search'
 
 class Home extends React.Component {
     state = {
@@ -116,15 +117,18 @@ class Home extends React.Component {
             return <div className="show-card"><ShowCard user={this.props.user} entry_items={this.props.entry_items} entry={this.state.full_entry} category={this.state.entry_show.category} entry_show={this.state.entry_show} backHome={this.backHome} submitForm={this.submitForm} editSubmit={this.editSubmit} deleteClick={this.deleteClick}/></div>
         }
         else {
-            return <div className="entry-container">{this.props.entry_items.map(entry_item => {return <EntryCard key={entry_item.name} entry_item={entry_item} token={this.props.token} handleShow={this.handleShow} onClick={this.onClick}/>})}</div>
+            return <div><div><Search handleInput={this.props.handleFilteredSearch}/></div><div className="entry-container">{this.props.entry_items.map(entry_item => {return <EntryCard key={entry_item.name} entry_item={entry_item} token={this.props.token} handleShow={this.handleShow} onClick={this.onClick}/>})}</div></div>
         }
     }
 
     render(){
         //console.log("HOME RENDERED")
         return (
-            <div className="main-container">
-                {this.renderContent()}
+            <div>
+                 
+                <div className="main-container">
+                    {this.renderContent()}
+                </div>
             </div>
         )
     }

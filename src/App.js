@@ -20,7 +20,8 @@ class App extends Component {
     loggedIn: false,
     token: null,
     user_notes: [],
-    user_entries: []
+    user_entries: [],
+    searchInput: ''
   }
 
   componentDidMount() {
@@ -127,6 +128,20 @@ class App extends Component {
     })
   }
 
+  handleFilteredSearch = (search) => {
+    this.setState({searchInput: search})
+  }
+
+
+  filteredItems = () => {
+    if (this.state.searchInput === '') {
+      return this.state.entry_items
+    }
+    else {
+      let filteredEntries = this.state.entry_items.filter(entry_item=> entry_item.name.includes(this.state.searchInput.toLowerCase()) ? entry_item:null)
+      return filteredEntries
+    }
+  }
   
 
   submitUserNote = (submitNote) => {
@@ -176,7 +191,7 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entry_items={this.state.entry_items} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile}  /> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.filteredItems()} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile} handleFilteredSearch={this.handleFilteredSearch}  /> : <Redirect to="/" />}
                 
             </Route>
             
