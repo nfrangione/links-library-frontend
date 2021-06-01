@@ -278,10 +278,12 @@
 
 ul {
   font-size: 12pt;
+  font-weight: bold;
 }
 
 li {
   font-size: 12pt;
+  font-weight: bold;
 }
 
 .note-form {
