@@ -39,7 +39,7 @@ const FormLogin = ({loginUser}) => {
     
     
     return (
-        <div className="login-container">
+        <div className="register-container">
             <div><h3>Login:</h3>
                 <form className="validate-form" onSubmit={handleLogin}> 
                     <label htmlFor="username">Username: {errors.username && <span className="error-message">{errors.username}</span>}</label><br/>

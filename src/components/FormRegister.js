@@ -60,7 +60,7 @@ const FormRegister = ({registerUser}) => {
             <div>
                 <h3>Register:</h3>
                 <form className="validate-form" onSubmit={handleRegister}> 
-                    <label htmlFor="username">Username: {errors.username && <span className="error-message">{errors.username}</span>}</label>
+                    <label htmlFor="username">Username: {errors.username && <span className="error-message">{errors.username}</span>}</label><br/>
                         <input
                         type="text"
                         name="username"
@@ -69,7 +69,7 @@ const FormRegister = ({registerUser}) => {
                         onChange={(event) => setUsername(event.target.value)}
                     /><br/><br/>
                     
-                    <label htmlFor="password">Password: {errors.password && <span className="error-message">{errors.password}</span>}</label>
+                    <label htmlFor="password">Password: {errors.password && <span className="error-message">{errors.password}</span>}</label><br/>
                     <input
                         type="password"
                         name="password"
@@ -78,7 +78,7 @@ const FormRegister = ({registerUser}) => {
                         onChange={(event) => setPassword(event.target.value)}
                     /><br/><br/>
                     
-                    <label htmlFor="password2">Confirm Password: {errors.password2 && <span className="error-message">{errors.password2}</span>}</label>
+                    <label htmlFor="password2">Confirm Password: {errors.password2 && <span className="error-message">{errors.password2}</span>}</label><br/>
                     <input
                         type="password"
                         name="password2"
@@ -88,7 +88,7 @@ const FormRegister = ({registerUser}) => {
                     />
                     
                     <p className="forgot-password text-right">
-                    Already registered <Link to="/">sign in?</Link>
+                    Already Registered? <Link to="/">Sign In</Link>
                     </p>
                     <input type="submit" value="Register" />
                 </form>
