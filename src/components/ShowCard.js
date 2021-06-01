@@ -13,16 +13,18 @@ export default class ShowCard extends Component {
     }
 
     handleShowForm = () => {
-
+        this.setState({editForm: false})
         this.setState({createForm: !this.state.createForm})
     }
 
     hideEditForm = () => {
+        
         this.setState({editForm: !this.state.editForm})
     }
 
     editClick = (e, note) => {
         //e.preventDefault();
+        this.setState({createForm: false})
         this.setState({editForm: !this.state.editForm})
         this.setState({note})
     }
@@ -38,7 +40,7 @@ export default class ShowCard extends Component {
                 <div className="exit-show"><button onClick={()=>this.props.backHome()}>X</button></div>
                 <div className="left-show">
                     <img id="show-image" src={this.props.entry.image}></img>
-                    <div className="show-review" hidden={this.props.entry_show.user_notes.find(user_note => user_note.id === this.props.user.id)}>
+                    <div className="show-review" >
                         <button className="show-button" onClick={() => this.handleShowForm()}>Make A Note</button>
                     </div>
                 </div>

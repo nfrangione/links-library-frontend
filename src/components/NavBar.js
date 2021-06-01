@@ -9,7 +9,7 @@ class NavBar extends React.Component {
                     {this.props.user !== {} && <p>@{this.props.user.username}</p>}
                 </div>
                 <div className="nav-logo">
-                    <h2>Link's Library</h2>
+                    <h2>Link's Library (Zelda: BOTW)</h2>
                 </div>
                 <div className="nav-links">
                     <Link to="/entry_items" className="nav-link" hidden={!this.props.loggedIn}>Browse</Link>
@@ -18,9 +18,6 @@ class NavBar extends React.Component {
                     <Link to="/" className="nav-link" hidden={this.props.loggedIn} >Login</Link>
                     <Link to="/" className="nav-link" hidden={!this.props.loggedIn} onClick={(e) => this.props.handleLogout(e)}>Logout</Link>
                 </div>
-                  
-                
-                
             </div>
         )
     }
