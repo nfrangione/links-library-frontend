@@ -28,15 +28,16 @@ export default class ShowCard extends Component {
     }
 
     render() {
+        console.log(this.props.entry)
         return (
         <div className="show-container">
             <div className="main-show">
                 <div className="exit-show"><button onClick={()=>this.props.backHome()}>X</button></div>
                 <div className="left-show">
                     <img id="show-image" src={this.props.entry.image}></img>
-                </div>
-                <div className="show-review" hidden={this.props.entry_show.user_notes.find(user_note => user_note.id == this.props.user.id)}>
-                    <button className="show-button" onClick={() => this.handleShowForm()}>Make A Note</button>
+                    <div className="show-review" hidden={this.props.entry_show.user_notes.find(user_note => user_note.id == this.props.user.id)}>
+                        <button className="show-button" onClick={() => this.handleShowForm()}>Make A Note</button>
+                    </div>
                 </div>
                 <div className="right-show">
                     {this.props.category === "equipment" ? <div >
@@ -46,7 +47,7 @@ export default class ShowCard extends Component {
                         {this.props.entry.common_locations !== null && this.props.entry.common_locations !== undefined ? <ul>Common Locations: {this.props.entry.common_locations.map(location => <li>{location}</li>)}</ul>:null}
                     </div> : <div >
                         <h1>{this.props.entry.name} ({this.props.entry.category})</h1>
-                        {this.props.entry.drops === [] || this.props.entry.drops === undefined ? null : <h3>Drops: {this.props.entry.drops.join(', ')}</h3>}
+                        {!this.props.entry.drops || this.props.entry.drops === [] || this.props.entry.drops === undefined ? null : <h3>Drops: {this.props.entry.drops.join(', ')}</h3>}
                         <h3>Description: {this.props.entry.description}</h3>
                         {this.props.entry.common_locations !== null && this.props.entry.common_locations !== undefined ? <ul>Common Locations: {this.props.entry.common_locations.map(location => <li>{location}</li>)}</ul>:null}
                     </div>
