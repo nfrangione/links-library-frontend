@@ -29,23 +29,24 @@
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
   text-align: center;
-  margin: 0px 0px 0px 0px;
+  margin: 0px, 0px, 0px, 0px;
   border: 10px;
   height: 60px;
   width: 100%;
+  color: black;
 }
 
 .nav-logo {
   font-size: Large;
   grid-column: 2/3;
-  display: block;
+  display: flex;
   text-align: center;
   justify-content: center;
   margin-bottom: 5px;
 }
 
 .nav-links {
-  font-size: 16pt;
+  font-size: 14pt;
   display: flex;
   position: relative;
   margin-top: 5px;
@@ -55,7 +56,7 @@
 }
 
 .main-container {
-  background-color: #4aba91
+  background-color:#4aba91 
 }
 
 .entry-container {
@@ -101,16 +102,30 @@
 }
 
 .button-row {
+  display: flex;
+  flex-direction: row;
+  /* margin: 10px; */
   margin-top: 10px;
   margin-bottom: 10px;
-  text-align: center;
+  justify-content: space-evenly;
+}
+
+.button-row button {
+  height: auto;
+  width: 15%;
+  border-radius: 25px;
+  border-color: black;
+  font-weight: bold;
+  font-size: 11pt;
 }
 
 .show-container{
   margin: 12px;
   overflow-y: auto;
   overflow-x: hidden;
-  
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 
@@ -151,7 +166,7 @@
 .right-show {
   grid-column: 2/3;
   grid-row: 1/3;
-  margin-top: 30px;
+  margin-top: 20px;
   align-content: center;
   justify-content: right;
 }
@@ -179,7 +194,8 @@
   grid-column: 1/4;
   position: relative;
   grid-row:  3/5;
-  background-color: #2b324e;
+  background-color: #0e5135;
+  /* background-color: #2b324e; */
   border-radius: 25px;
   color: white;
   padding: 20px;
@@ -196,14 +212,16 @@
   grid-column: 4/5;
   position: relative;
   grid-row:  2/5;
-  background-color: #2b324e;
+  background-color: #d4ce46 ;
   border-radius: 25px;
-  color: white;
-  padding: 20px;
+  color: black;
+  /* padding: 10px; */
   overflow: auto;
   margin: 10px;
   align-items: center;
   position: relative;
+  padding-bottom: 5px;
+  padding-right: 20px;
 }
 
 .form-container input[type=textarea]{
@@ -239,4 +257,23 @@ li {
   height: 80%;
   z-index: 2;
   position: relative
+}
+
+.note-card {
+  display: grid;
+  background-color: #0d9263;
+  grid-template-columns: 1fr 1fr;
+  border: white solid 2px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.note-left {
+  text-align:left;
+  padding-left: 5px;
+}
+
+.note-right {
+  text-align:right;
+  padding-right: 5px;
 }

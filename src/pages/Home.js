@@ -21,7 +21,7 @@ class Home extends React.Component {
         })
         .then(res => res.json())
         .then(entry => {
-            console.log(entry)
+            //console.log(entry)
             this.setState({entry_show: entry});
             this.getDataEntry(entry)
         })
@@ -38,6 +38,7 @@ class Home extends React.Component {
         })
         .then(res => res.json())
         .then(entryData => {
+            console.log(entryData)
             this.setState({full_entry: entryData["data"]})
         })
     }
@@ -62,7 +63,7 @@ class Home extends React.Component {
             if (note.message) {
                 alert(note.message)
             }
-            console.log(note)
+            // console.log(note)
             this.onClick(this.state.entry_show) 
         })
         //this.props.updateProfile()
@@ -84,7 +85,7 @@ class Home extends React.Component {
         })
         .then(res => res.json())
         .then(note => {
-            console.log(note)
+            //console.log(note)
             this.onClick(this.state.entry_show)
         })
 
@@ -125,7 +126,7 @@ class Home extends React.Component {
                     <button value='' onClick={(e)=>this.props.handleCategoryFilter(e)}>All Items</button>
                     <button value='monsters' onClick={(e)=>this.props.handleCategoryFilter(e)}>Monsters</button>
                     <button value='equipment' onClick={(e)=>this.props.handleCategoryFilter(e)}>Equipment</button>
-                    {/* <button value='' onClick={(e)=>props.sortNotes(e)}>Recently Created</button> */}
+                    <button value='materials' onClick={(e)=>this.props.handleCategoryFilter(e)}>Materials</button>
                 </div>
                 <div><Search handleInput={this.props.handleFilteredSearch}/></div>
                 

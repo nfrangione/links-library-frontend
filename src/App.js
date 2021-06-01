@@ -157,6 +157,9 @@ class App extends Component {
     else if(this.state.categoryFilter === 'equipment') {
       return([...this.filteredItems()].filter(item => item.category === 'equipment'))
     }
+    else if(this.state.categoryFilter === 'materials') {
+      return([...this.filteredItems()].filter(item => item.category === 'materials'))
+    }
     else {
       return(this.filteredItems())
     }

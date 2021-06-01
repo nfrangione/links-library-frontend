@@ -19,7 +19,7 @@ export default class UserNoteCard extends Component {
                 </div>
                 <div className="note_date">
                     <p>Last Update: {this.props.note.updated_at.slice(0,10)}</p>
-                    <p>My Notes: {this.props.note.note}</p>
+                    <p>My Note: {this.props.note.note}</p>
                     
                 </div>
                 <div>

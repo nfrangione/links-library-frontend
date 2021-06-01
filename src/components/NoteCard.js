@@ -5,7 +5,7 @@ const NoteCard = ({note, editClick, deleteClick, user}) => {
         <div className="note-card">
             
             <div className="note-left">
-                <p>{note.created_at.slice(0,10)}</p>
+                <p>{note.updated_at.slice(0,10)}</p>
                 <p>{note.note}</p>
             </div>
 
