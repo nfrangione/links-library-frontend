@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const EditNoteForm = ({noteEdit, entry, user, editSubmit, hideEditForm}) => {
+const EditUserNoteForm = ({noteEdit, entry, user, editSubmit, hideEditForm, cancelClick}) => {
     const [note, setNote] = useState(noteEdit["note"]);
 
     const handleSubmit = (e) => {
@@ -19,7 +19,9 @@ const EditNoteForm = ({noteEdit, entry, user, editSubmit, hideEditForm}) => {
     return (
         <div className="review-container">
             <div className="form-container">
-            <h3>Edit Note: {entry.name}</h3>
+               
+                <h3>Edit Note: {entry.name} ({entry.category})</h3>
+                <img src={entry.image_url}></img>
                 <form onSubmit={handleSubmit}> 
                 <label htmlFor="note">
                     <input
@@ -29,11 +31,14 @@ const EditNoteForm = ({noteEdit, entry, user, editSubmit, hideEditForm}) => {
                     onChange={(event) => setNote(event.target.value)}
                     /><br/>
                 </label>
-                <input type="submit" value="Submit" />
+                <div className="form-buttons">
+                    <input type="submit" value="Submit" />
+                    <button classname="cancel" onClick={()=>cancelClick()}>Cancel</button>
+                </div>
             </form>
         </div>
     </div>
   );
 }
 
-export default EditNoteForm;
+export default EditUserNoteForm;
