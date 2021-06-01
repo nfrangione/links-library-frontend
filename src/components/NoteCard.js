@@ -12,6 +12,7 @@ const NoteCard = ({note, editClick, deleteClick, user}) => {
             <div className="note-right">
                 { user.id == note.user_id ? 
                 <div>
+                    <p>@{note.username}</p>
                     <button onClick={(e) => editClick(e, note)}>Edit</button>
                     <button onClick={(e) => deleteClick(e, note)}>Delete</button>
                 </div> : null

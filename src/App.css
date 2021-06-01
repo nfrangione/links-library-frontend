@@ -36,16 +36,19 @@
 }
 
 .nav-logo {
+  font-size: Large;
   grid-column: 2/3;
   display: block;
   text-align: center;
   justify-content: center;
+  margin-bottom: 5px;
 }
 
 .nav-links {
+  font-size: 16pt;
   display: flex;
   position: relative;
-  margin-top: 10px;
+  margin-top: 5px;
   /* height: 50%; */
   align-items: center;
   justify-content: space-evenly;
@@ -81,7 +84,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px dashed #0e5135;
+  border: 2px solid #0e5135;
 }
 
 .filter input {
@@ -95,6 +98,12 @@
   padding-left: 10px;
   color: rgba(0, 0, 0, 0.55);
   font-weight: bolder;
+}
+
+.button-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .show-container{

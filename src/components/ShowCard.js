@@ -35,6 +35,9 @@ export default class ShowCard extends Component {
                 <div className="left-show">
                     <img id="show-image" src={this.props.entry.image}></img>
                 </div>
+                <div className="show-review" hidden={this.props.entry_show.user_notes.find(user_note => user_note.id == this.props.user.id)}>
+                    <button className="show-button" onClick={() => this.handleShowForm()}>Make A Note</button>
+                </div>
                 <div className="right-show">
                     {this.props.category === "equipment" ? <div >
                         <h1>{this.props.entry.name} ({this.props.entry.category})</h1>
@@ -52,10 +55,7 @@ export default class ShowCard extends Component {
                         {this.state.createForm === true ? <CreateNoteForm className="note-pop-up" entry={this.props.entry_show} user={this.props.user} handleShowForm={this.handleShowForm} submitForm={this.props.submitForm}/> : null}
                     </div>
                     <div hidden={!this.state.editForm} className="note-form">
-                        {this.state.editForm === true ? <EditNoteForm className="note-pop-up" entry={this.props.entry_show} noteEdit={this.state.note} hideEditForm={this.hideEditForm} editSubmit={this.props.editSubmit}/> : null}
-                    </div>
-                    <div className="show-review" hidden={this.props.entry_show.user_notes.find(user_note => user_note.id == this.props.user.id? true:false) === true}>
-                        <button className="show-button" onClick={() => this.handleShowForm()}>Make A Note</button>
+                        {this.state.editForm === true ? <EditNoteForm className="note-pop-up" entry={this.props.entry_show} user={this.props.user} noteEdit={this.state.note} hideEditForm={this.hideEditForm} editSubmit={this.props.editSubmit}/> : null}
                     </div>
                 </div>
                 

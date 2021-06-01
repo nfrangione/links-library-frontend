@@ -15,11 +15,11 @@ export default class UserNoteCard extends Component {
             <div className="entry-card" >
                 <div className="item_display">
                     <img src={entryForNote.image_url}></img>
-                    <h3 >{entryForNote.name} ({entryForNote.category}) </h3>
+                    <h3>{entryForNote.name} ({entryForNote.category}) </h3>
                 </div>
                 <div className="note_date">
-                    <p>{this.props.note.created_at.slice(0,10)}</p>
-                    <p>{this.props.note.note}</p>
+                    <p>Last Update: {this.props.note.updated_at.slice(0,10)}</p>
+                    <p>My Notes: {this.props.note.note}</p>
                     
                 </div>
                 <div>

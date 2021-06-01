@@ -59,6 +59,9 @@ class Home extends React.Component {
         })
         .then(res => res.json())
         .then(note => {
+            if (note.message) {
+                alert(note.message)
+            }
             console.log(note)
             this.onClick(this.state.entry_show) 
         })
@@ -117,7 +120,17 @@ class Home extends React.Component {
             return <div className="show-card"><ShowCard user={this.props.user} entry_items={this.props.entry_items} entry={this.state.full_entry} category={this.state.entry_show.category} entry_show={this.state.entry_show} backHome={this.backHome} submitForm={this.submitForm} editSubmit={this.editSubmit} deleteClick={this.deleteClick}/></div>
         }
         else {
-            return <div><div><Search handleInput={this.props.handleFilteredSearch}/></div><div className="entry-container">{this.props.entry_items.map(entry_item => {return <EntryCard key={entry_item.name} entry_item={entry_item} token={this.props.token} handleShow={this.handleShow} onClick={this.onClick}/>})}</div></div>
+            return <div>
+                <div className='button-row'>
+                    <button value='' onClick={(e)=>this.props.handleCategoryFilter(e)}>All Items</button>
+                    <button value='monsters' onClick={(e)=>this.props.handleCategoryFilter(e)}>Monsters</button>
+                    <button value='equipment' onClick={(e)=>this.props.handleCategoryFilter(e)}>Equipment</button>
+                    {/* <button value='' onClick={(e)=>props.sortNotes(e)}>Recently Created</button> */}
+                </div>
+                <div><Search handleInput={this.props.handleFilteredSearch}/></div>
+                
+                <div className="entry-container">{this.props.entry_items.map(entry_item => {return <EntryCard key={entry_item.name} entry_item={entry_item} token={this.props.token} handleShow={this.handleShow} onClick={this.onClick}/>})}</div>
+            </div>
         }
     }
 

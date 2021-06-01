@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FormEditReview = ({noteEdit, entry, editSubmit, hideEditForm}) => {
+const FormEditReview = ({noteEdit, entry, user, editSubmit, hideEditForm}) => {
     const [note, setNote] = useState(noteEdit["note"]);
 
     const handleSubmit = (e) => {
@@ -9,24 +9,25 @@ const FormEditReview = ({noteEdit, entry, editSubmit, hideEditForm}) => {
             id: noteEdit.id,
             note: note,
             entry_id: entry.id,
-            user_id: noteEdit.user_id
+            user_id: noteEdit.user_id,
+            username: user.username,
+            entry_name: entry.name
         }
         editSubmit(noteSubmission, e)
         hideEditForm()
     }
     return (
         <div className="review-container">
-            <h1>Edit Note: {entry.title}</h1>
             <div className="form-container">
+            <h3>Edit Note: {entry.name}</h3>
                 <form onSubmit={handleSubmit}> 
                 <label htmlFor="note">
-                    Note:
                     <input
                     type="textarea"
                     name="note"
                     value={note}
                     onChange={(event) => setNote(event.target.value)}
-                    /><br/><br/>
+                    /><br/>
                 </label>
                 <input type="submit" value="Submit" />
             </form>

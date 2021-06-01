@@ -21,7 +21,10 @@ class App extends Component {
     token: null,
     user_notes: [],
     user_entries: [],
-    searchInput: ''
+    categoryFilter: '',
+    searchInput: '',
+    searchNotes: '',
+    sortBy: ''
   }
 
   componentDidMount() {
@@ -142,7 +145,58 @@ class App extends Component {
       return filteredEntries
     }
   }
-  
+
+  handleCategoryFilter = (e) => {
+    this.setState({categoryFilter: e.target.value})
+  }
+
+  categoryFilteredItems = () => {
+    if(this.state.categoryFilter === 'monsters') {
+      return([...this.filteredItems()].filter(item => item.category === 'monsters'))
+    }
+    else if(this.state.categoryFilter === 'equipment') {
+      return([...this.filteredItems()].filter(item => item.category === 'equipment'))
+    }
+    else {
+      return(this.filteredItems())
+    }
+  }
+
+  handleSearchNotes = (search) => {
+    this.setState({searchNotes: search})
+  }
+
+  searchNotes = () => {
+    if (this.state.searchNotes === '') {
+      return this.state.user_notes
+    }
+    else {
+      let searchResults = this.state.user_notes.filter(user_note => user_note.entry_name.includes(this.state.searchNotes.toLowerCase()) ? user_note:null)
+      return searchResults
+    }
+  }
+
+  sortNotes = (e) => {
+    this.setState({sortBy: e.target.value})
+  }
+
+  sortedNotes = () => {
+    if (this.state.sortBy === 'alphabetical') {
+      return([...this.searchNotes()].sort((note1, note2) => note1.entry_name < note2.entry_name ? -1:1))
+    }
+    else if(this.state.sortBy === 'recency') {
+      return([...this.searchNotes()].sort((note1, note2) => -1*(note1.id-note2.id)))
+    }
+    else if(this.state.sortBy === 'edited') {
+      return([...this.searchNotes()].sort((note1, note2) => -1*(new Date(note1.updated_at)-new Date(note2.updated_at))))
+    }
+    else if (this.state.sortBy === 'created'){
+      return([...this.searchNotes()].sort((note1, note2) => note1.id-note2.id)) 
+    }
+    else {
+      return(this.searchNotes())
+    }
+  }
 
   submitUserNote = (submitNote) => {
     fetch(`http://localhost:3000/user_notes/${submitNote.id}`, {
@@ -178,6 +232,10 @@ class App extends Component {
       user_notes: [],
       user_entries: [],
       token: null,
+      categoryFilter: '',
+      searchInput: '',
+      searchNotes: '',
+      sortBy: '',
       entry_items: []
     })
     
@@ -191,7 +249,7 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entry_items={this.filteredItems()} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile} handleFilteredSearch={this.handleFilteredSearch}  /> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.categoryFilteredItems()} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile} handleFilteredSearch={this.handleFilteredSearch} handleCategoryFilter={this.handleCategoryFilter}/> : <Redirect to="/" />}
                 
             </Route>
             
@@ -200,7 +258,7 @@ class App extends Component {
             </Route>
             
             <Route path="/profile">
-                {this.state.loggedIn ? <Profile user={this.state.user} user_notes={this.state.user_notes} user_entries={this.state.user_entries} submitUserNote={this.submitUserNote} /> : <Redirect to="/" />}
+                {this.state.loggedIn ? <Profile user={this.state.user} user_notes={this.sortedNotes()} user_entries={this.state.user_entries} submitUserNote={this.submitUserNote} handleSearchNotes={this.handleSearchNotes} sortNotes={this.sortNotes} /> : <Redirect to="/" />}
             </Route>
 
             <Route exact path="/">

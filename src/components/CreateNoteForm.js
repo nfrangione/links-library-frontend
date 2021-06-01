@@ -8,7 +8,9 @@ const CreateNoteForm = ({entry, submitForm, handleShowForm, user}) => {
         let noteSubmission = {
             note: note,
             entry_item_id: entry.id,
-            user_id: user.id
+            user_id: user.id,
+            username: user.username,
+            entry_name: entry.name
         }
         submitForm(noteSubmission, e)
         handleShowForm()
@@ -17,11 +19,10 @@ const CreateNoteForm = ({entry, submitForm, handleShowForm, user}) => {
 
   return (
     <div className="review-container">
-        <h3>Entry Item: {entry.name}</h3>
         <div className="form-container">
+            <h3>Entry Item: {entry.name}</h3>
             <form onSubmit={handleSubmit}>
             <label htmlFor="note">
-                Note:
                 <input
                 type="textarea"
                 name="note"
