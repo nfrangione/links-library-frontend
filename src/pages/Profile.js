@@ -40,7 +40,7 @@ export default class Profile extends Component {
                     <button value='edited' onClick={(e)=>this.props.sortNotes(e)}>Recently Edited</button>
                     <button value='recency' onClick={(e)=>this.props.sortNotes(e)}>Recently Created</button>
                 </div>
-                <div><SearchNotes handleInput={this.props.handleSearchNotes}/></div>
+                <div><SearchNotes handleInput={this.props.handleSearchNotes} searchSave={this.props.searchSave}/></div>
                 <div hidden={!this.state.editForm} className="">
                     {this.state.editForm === true ? <EditUserNoteForm className="note-pop-up" user={this.props.user} entry={this.state.entryEdit} noteEdit={this.state.noteEdit} hideEditForm={this.toggleEdit} editSubmit={this.props.submitUserNote} cancelClick={this.cancelClick}/> : null}
                 </div>

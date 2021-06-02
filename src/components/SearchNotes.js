@@ -8,6 +8,7 @@ const SearchNotes = (props) => {
         id="search-bar"
         type="text"
         placeholder="Search For User Note By Entry Item Name..."
+        value={props.searchSave}
       />
     </div>
   );

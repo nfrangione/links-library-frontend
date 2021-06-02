@@ -266,7 +266,7 @@ class App extends Component {
             </Route>
             
             <Route path="/profile">
-                {this.state.loggedIn ? <Profile user={this.state.user} user_notes={this.sortedNotes()} user_entries={this.state.user_entries} submitUserNote={this.submitUserNote} handleSearchNotes={this.handleSearchNotes} sortNotes={this.sortNotes} /> : <Redirect to="/" />}
+                {this.state.loggedIn ? <Profile user={this.state.user} user_notes={this.sortedNotes()} user_entries={this.state.user_entries} submitUserNote={this.submitUserNote} handleSearchNotes={this.handleSearchNotes} sortNotes={this.sortNotes} searchSave={this.state.searchNotes} /> : <Redirect to="/" />}
             </Route>
 
             <Route exact path="/">
