@@ -45,7 +45,7 @@ export default class Profile extends Component {
                     {this.state.editForm === true ? <EditUserNoteForm className="note-pop-up" user={this.props.user} entry={this.state.entryEdit} noteEdit={this.state.noteEdit} hideEditForm={this.toggleEdit} editSubmit={this.props.submitUserNote} cancelClick={this.cancelClick}/> : null}
                 </div>
                 <div className="entry-container">
-                    {this.props.user_notes.map((note)=> <UserNoteCard key={note.id} note={note} user_entries={this.props.user_entries} editClick={this.editClick}/>)}  
+                    {this.props.user_notes.map((note)=> <UserNoteCard key={note.id} note={note} user_entries={this.props.user_entries} editClick={this.editClick} editForm={this.state.editForm}/>)}  
                 </div>
             </div>
         )

@@ -21,7 +21,7 @@ export default class UserNoteCard extends Component {
                     <p>My Note: {this.props.note.note}</p>
                     
                 </div>
-                <div>
+                <div hidden={this.props.editForm}>
                     <button onClick={(e) => this.props.editClick(this.props.note, entryForNote)}>Edit</button>
                 </div>
                 <br/>
