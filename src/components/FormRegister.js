@@ -54,7 +54,7 @@ const FormRegister = ({registerUser}) => {
     return (
         <div className="register-container">
             <div>
-                <h2>Register:</h2>
+                <h2>Register</h2>
                 <form className="validate-form" onSubmit={handleRegister}> 
                     <label htmlFor="username">Username: {errors.username && <span className="error-message">{errors.username}</span>}</label><br/>
                         <input
