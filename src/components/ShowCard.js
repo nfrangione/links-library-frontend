@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import CreateNoteForm from './CreateNoteForm'
 import EditNoteForm from './EditNoteForm'
 import NoteCard from './NoteCard'
-import { Link } from 'react-router-dom'
 
 
 export default class ShowCard extends Component {
