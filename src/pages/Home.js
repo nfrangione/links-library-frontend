@@ -122,13 +122,15 @@ class Home extends React.Component {
         }
         else {
             return <div>
+                <h2>ENTRIES</h2>
+                <h3>The Legend of Zelda: Breath of the Wild</h3>
                 <div className='button-row'>
                     <button value='' onClick={(e)=>this.props.handleCategoryFilter(e)}>All Items</button>
                     <button value='monsters' onClick={(e)=>this.props.handleCategoryFilter(e)}>Monsters</button>
                     <button value='equipment' onClick={(e)=>this.props.handleCategoryFilter(e)}>Equipment</button>
                     <button value='materials' onClick={(e)=>this.props.handleCategoryFilter(e)}>Materials</button>
                 </div>
-                <div><Search handleInput={this.props.handleFilteredSearch}/></div>
+                <div><Search handleInput={this.props.handleFilteredSearch} search={this.props.search}/></div>
                 
                 <div className="entry-container">{this.props.entry_items.map(entry_item => {return <EntryCard key={entry_item.name} entry_item={entry_item} token={this.props.token} handleShow={this.handleShow} onClick={this.onClick}/>})}</div>
             </div>

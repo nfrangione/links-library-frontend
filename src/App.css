@@ -326,7 +326,7 @@ li {
   text-align: center;
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 580px) {
   .App {
     width: fit-content;
     height: fit-content;
@@ -378,5 +378,11 @@ li {
     font-size: 8pt;
   }
 
-  
+  .main-container h2 {
+    font-size: small;
+  }
+
+  .main-container h3 {
+    font-size: smaller
+  }
 }

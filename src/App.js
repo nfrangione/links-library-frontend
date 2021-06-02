@@ -94,6 +94,7 @@ class App extends Component {
     })
   }
 
+  // Fetch index of Entry Items Controller
   getEntries = () => {
     console.log("GOT ENTRIES")
     fetch(`${baseURL}entry_items/`, {
@@ -108,6 +109,7 @@ class App extends Component {
     })
   }
 
+  //Grab User's Notes
   getUserNotes=()=>{
     console.log("GOT USER NOTES")
     fetch(`http://localhost:3000/api/v1/profile`, {
@@ -131,11 +133,12 @@ class App extends Component {
     })
   }
 
+  //Read user input to search bar
   handleFilteredSearch = (search) => {
     this.setState({searchInput: search})
   }
 
-
+  //Filtering entry items on home page by search bar input
   filteredItems = () => {
     if (this.state.searchInput === '') {
       return this.state.entry_items
@@ -146,10 +149,12 @@ class App extends Component {
     }
   }
 
+  //Read button click for filter entry items by category
   handleCategoryFilter = (e) => {
     this.setState({categoryFilter: e.target.value})
   }
 
+  //Returns Items based on category and search (if there is a search)
   categoryFilteredItems = () => {
     if(this.state.categoryFilter === 'monsters') {
       return([...this.filteredItems()].filter(item => item.category === 'monsters'))
@@ -165,6 +170,7 @@ class App extends Component {
     }
   }
 
+  //Handling user search bar input
   handleSearchNotes = (search) => {
     this.setState({searchNotes: search})
   }
@@ -179,6 +185,7 @@ class App extends Component {
     }
   }
 
+  //Handling returned notes order based on search input and selected sort by method 
   sortNotes = (e) => {
     this.setState({sortBy: e.target.value})
   }
@@ -218,8 +225,6 @@ class App extends Component {
       //let newUserNotes = this.state.user_notes.map(currentNote => currentNote.id === note.id ? note:currentNote)
       //this.setState({user_notes: newUserNotes})
     })
-    
-    
   }
 
   updateProfile = () => {
@@ -252,7 +257,7 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entry_items={this.categoryFilteredItems()} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile} handleFilteredSearch={this.handleFilteredSearch} handleCategoryFilter={this.handleCategoryFilter}/> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.categoryFilteredItems()} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile} handleFilteredSearch={this.handleFilteredSearch} handleCategoryFilter={this.handleCategoryFilter} search={this.state.searchInput}/> : <Redirect to="/" />}
                 
             </Route>
             

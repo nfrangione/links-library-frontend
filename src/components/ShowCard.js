@@ -36,7 +36,7 @@ export default class ShowCard extends Component {
         return (
         <div className="show-container">
             <div className="main-show">
-                <div className="exit-show"><button onClick={()=>this.props.backHome()}>X</button></div>
+                <div className="exit-show"><button value='' onClick={()=>this.props.backHome()}>X</button></div>
                 <div className="left-show">
                     <img id="show-image" src={this.props.entry.image}></img>
                     <div className="show-review" >

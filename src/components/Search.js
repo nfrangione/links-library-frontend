@@ -1,13 +1,14 @@
 import React from 'react';
 
-const Search = (props) => {
+const Search = ({handleInput, search}) => {
   return (
     <div className="filter">
       <input
-        onChange = {(e) => props.handleInput(e.target.value)}
+        onChange = {(e) => handleInput(e.target.value)}
         id="search-bar"
         type="text"
         placeholder="Search For Entry Item By Name..."
+        value={search}
       />
     </div>
   );
