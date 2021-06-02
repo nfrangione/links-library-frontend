@@ -10,6 +10,7 @@ export default class Profile extends Component {
         entryEdit: {}
     }
     
+    //Handle edit click & form
     editClick = (note, entry) => {
         //e.preventDefault()
         this.setState({noteEdit: note, entryEdit: entry})
@@ -21,6 +22,7 @@ export default class Profile extends Component {
         window.scrollTo(0,0)
     }
 
+    //Cancel edit
     cancelClick = () => {
         this.setState({editForm: false, noteEdit: {}, entryEdit: {}})
     }

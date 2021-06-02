@@ -36,6 +36,7 @@ class App extends Component {
     }
   }
 
+  //Handle registering a user
   registerUser = (newUser) => {
     let user = {
       username: newUser.username,
@@ -60,6 +61,7 @@ class App extends Component {
     })
   }
 
+  //Handle loggin in a user
   loginUser = (loginSubmit) => {
     fetch (`${userURL}login`, {
       method: "POST",
@@ -208,6 +210,7 @@ class App extends Component {
     }
   }
 
+  //Submitting edited note from profile page
   submitUserNote = (submitNote) => {
     fetch(`http://localhost:3000/user_notes/${submitNote.id}`, {
         method: 'PUT',
@@ -227,10 +230,12 @@ class App extends Component {
     })
   }
 
+  //Update user notes based on changes in Home page
   updateProfile = () => {
     this.getUserNotes()
   }
 
+  //Handle Logout
   handleLogout = (e) => {
     e.preventDefault()
     localStorage.clear()

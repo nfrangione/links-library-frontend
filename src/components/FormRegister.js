@@ -27,7 +27,6 @@ const FormRegister = ({registerUser}) => {
             errors.username = "Username required"
         }
 
-        //Password
         if(!registerSubmission.password) {
             errors.password = 'Password is required'
         } 
@@ -35,18 +34,15 @@ const FormRegister = ({registerUser}) => {
             errors.password = "Password needs to be 6 characters or more"
         }
 
-        //Confirm Password
         if(!registerSubmission.password2) {
             errors.password2 = "Password is required"
         } else if (registerSubmission.password2 !== registerSubmission.password)  {
             errors.password2 = 'Passwords do not match'
         }
-        // console.log(errors)
         return errors
     }
 
     useEffect(() => {
-        // console.log(errors)
         if(Object.keys(errors).length === 0 && isSubmitting){
           registerUser(registerSubmission)  
         }

@@ -28,6 +28,7 @@ class Home extends React.Component {
         this.props.updateProfile()
     }
 
+    //Grab full data for show
     getDataEntry = (entry) => {
         fetch(`https://botw-compendium.herokuapp.com/api/v2/entry/${entry.original_id}`, {
             method: 'GET',
@@ -43,11 +44,8 @@ class Home extends React.Component {
         })
     }
 
+    //Create note
     submitForm = (submitNote, e) => {
-        // e.preventDefault()
-        // this.props.submitCreateNote(submitNote)
-       
-        //this.showEntry()
         e.preventDefault()
         fetch(`http://localhost:3000/user_notes`, {
             method: 'POST',
@@ -63,17 +61,13 @@ class Home extends React.Component {
             if (note.message) {
                 alert(note.message)
             }
-            // console.log(note)
             this.onClick(this.state.entry_show) 
         })
-        //this.props.updateProfile()
     }
 
+    //Update note
     editSubmit = (updateNote, e) => {
         e.preventDefault()
-        //console.log(updateNote)
-        //this.props.submitUserNote(updateNote)
-        //this.onClick(this.state.entry_show)
         fetch(`http://localhost:3000/user_notes/${updateNote.id}`, {
         method: 'PUT',
         headers: {
@@ -85,14 +79,12 @@ class Home extends React.Component {
         })
         .then(res => res.json())
         .then(note => {
-            //console.log(note)
             this.onClick(this.state.entry_show)
         })
 
     }
-
     
-
+    //Delete note
     deleteClick = (e, deleteNote) => {
         e.stopPropagation()
         fetch(`http://localhost:3000/user_notes/${deleteNote.id}`, {
@@ -104,6 +96,7 @@ class Home extends React.Component {
         .then(() => this.onClick(this.state.entry_show))
     }
 
+    //Back to browse from show
     backHome = () => {
         this.setState({
             entry_show: {},
@@ -113,11 +106,7 @@ class Home extends React.Component {
     
 
     renderContent = () => {
-        //this.onClick(this.state.entry_show)
-        //console.log(Object.keys(this.state.entry_show).length)
-        //console.log(Object.keys(this.state.entry_show).length > 0)
         if (Object.keys(this.state.entry_show).length > 0) {
-            //console.log("I am true")
             return <div className="show-card"><ShowCard user={this.props.user} entry_items={this.props.entry_items} entry={this.state.full_entry} category={this.state.entry_show.category} entry_show={this.state.entry_show} backHome={this.backHome} submitForm={this.submitForm} editSubmit={this.editSubmit} deleteClick={this.deleteClick}/></div>
         }
         else {
@@ -138,7 +127,6 @@ class Home extends React.Component {
     }
 
     render(){
-        //console.log("HOME RENDERED")
         return (
             <div>
                  

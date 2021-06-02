@@ -16,6 +16,7 @@ const EditUserNoteForm = ({noteEdit, entry, user, editSubmit, hideEditForm, canc
         editSubmit(noteSubmission, e)
         hideEditForm()
     }
+    
     return (
         <div className="review-container">
             <div className="form-container">

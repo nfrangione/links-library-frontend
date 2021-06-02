@@ -3,19 +3,18 @@ import React, { useState } from "react";
 const CreateNoteForm = ({entry, submitForm, handleShowForm, user}) => {
   const [note, setNote] = useState("");
 
-   const handleSubmit = (e) => {
-        e.preventDefault()
-        let noteSubmission = {
-            note: note,
-            entry_item_id: entry.id,
-            user_id: user.id,
-            username: user.username,
-            entry_name: entry.name
-        }
-        submitForm(noteSubmission, e)
-        handleShowForm()
-    }
-  
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      let noteSubmission = {
+          note: note,
+          entry_item_id: entry.id,
+          user_id: user.id,
+          username: user.username,
+          entry_name: entry.name
+      }
+      submitForm(noteSubmission, e)
+      handleShowForm()
+  }
 
   return (
     <div className="review-container">
