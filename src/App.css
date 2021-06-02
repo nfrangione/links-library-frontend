@@ -10,14 +10,12 @@
 }
 
 .App-header {
-  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  
 }
 
 .App-link {
@@ -51,7 +49,6 @@
   display: flex;
   position: relative;
   margin-top: 5px;
-  /* height: 50%; */
   align-items: center;
   justify-content: space-evenly;
 }
@@ -65,7 +62,6 @@
 .image-row img {
   border: 5px solid #fff176;
   max-width: 30%;
-  
   margin-bottom: 3%;
 }
 
@@ -75,7 +71,6 @@
   align-items: center;
   justify-content: space-evenly;
   margin-top: 2%;
-  
 }
 
 .register-container {
@@ -88,7 +83,6 @@
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
   0 7px 20px 0 rgba(0, 0, 0, 0.2);
   margin: 5%;
-  /* margin: 20px; */
   padding: 25px;
 }
 
@@ -107,9 +101,6 @@
   position: relative;
   margin-top: 10px;
   margin-left: 10px;
-  /* margin-top: 20px;
-  margin-left: 20px; */
-  /* padding: 10px; */
 }
 
 .entry-card {
@@ -175,8 +166,6 @@
   padding-bottom: 10px;
 }
 
-
-
 .main-show {
   margin: 0px;
   display: grid;
@@ -230,12 +219,10 @@
 .nav-links {
   display: flex;
   position: relative;
-  /* background-color: #E0E0E0; */
   height: 60%;
   align-items: center;
   justify-content: space-evenly;
   margin-right: 20%;
-  
 }
 
 .notes-container {
@@ -243,9 +230,7 @@
   grid-column: 1/4;
   position: relative;
   grid-row:  3/5;
-
   background-color: #e0f7fa;
-  /* background-color: #fff176; */
   border-radius: 25px;
   color: black;
   padding: 20px;
@@ -265,7 +250,6 @@
   background-color: #fff176 ;
   border-radius: 25px;
   color: black;
-  /* padding: 10px; */
   overflow: auto;
   margin: 10px;
   align-items: center;
@@ -275,22 +259,18 @@
 }
 
 .form-container input[type=textarea]{
-  
   width: 100%;
-  /* height: 60;  */
   margin:12px;
   padding: 12px 20px;
   text-wrap:unrestricted;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-
 }
 
 .form-buttons {
   display: flex;
   flex-direction: row;
-  /* margin: 10px; */
   margin-top: 5px;
   margin-bottom: 5px;
   justify-content: space-evenly;
@@ -351,15 +331,11 @@ li {
 
   .register-container {
     width: fit-content;
-    /* justify-content: space-evenly; */
   }
 
   html, body {
     overflow-x: hidden;
   }
-  /* body {
-    position: relative
-  } */
 
   .right-show {
     font-size: 10pt;

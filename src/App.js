@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home'
@@ -30,7 +30,7 @@ class App extends Component {
   componentDidMount() {
     let token = localStorage.getItem('token')
     if (token) {
-      this.setState({token: token})
+      this.setState({loggedIn: true, token: token})
       this.getEntries()
       this.getUserNotes()
     }
@@ -129,7 +129,7 @@ class App extends Component {
         username: data.user.username,
         id: data.user.id
       }
-      this.setState({loggedIn: true})
+      // this.setState({loggedIn: true})
       this.setState({user: userGet})
       this.setState({user_entries: data.user.entry_items, user_notes: data.user.user_notes})
     })
