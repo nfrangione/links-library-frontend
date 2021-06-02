@@ -31,7 +31,7 @@ export default class Profile extends Component {
         return (
             <div>
                 <div>
-                    <h1 classname="profile-title">@{this.props.user.username}'s Notes Page</h1>
+                    <h2 classname="profile-title">@{this.props.user.username}'s Notes Page</h2>
                 </div>
                 <div className='button-row'>
                     <button value='' onClick={(e)=>this.props.sortNotes(e)}>Default Order</button>
