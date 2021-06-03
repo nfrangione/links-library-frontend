@@ -25,7 +25,7 @@ class Home extends React.Component {
             this.setState({entry_show: entry});
             this.getDataEntry(entry)
         })
-        // this.props.updateProfile()
+        this.props.updateProfile()
     }
 
     //Grab full data for show
@@ -42,7 +42,7 @@ class Home extends React.Component {
             console.log(entryData)
             this.setState({full_entry: entryData["data"]})
         })
-        this.props.updateProfile()
+        // this.props.updateProfile()
     }
 
     //Create note

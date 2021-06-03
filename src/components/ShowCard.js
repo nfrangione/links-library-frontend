@@ -38,13 +38,13 @@ export default class ShowCard extends Component {
             <div className="main-show">
                 <div className="exit-show"><button value='' onClick={()=>this.props.backHome()}>X</button></div>
                 <div className="left-show">
-                    <img id="show-image" src={this.props.entry.image}></img>
+                    <img id="show-image" src={this.props.entry_show.image_url}></img>
                     <div className="show-review" >
                         <button className="show-button" onClick={() => this.handleShowForm()}>Make A Note</button>
                     </div>
                 </div>
                 <div className="right-show">
-                    {this.props.category === "equipment" ? <div ><h1>{this.props.entry.name} ({this.props.entry.category})</h1><h2 hidden={!this.props.entry.attack && !this.props.entry.defense}>Atk: {this.props.entry.attack} Def: {this.props.entry.defense}</h2><h3>Description: {this.props.entry.description}</h3>{this.props.entry.common_locations !== null && this.props.entry.common_locations !== undefined ? <ul>Common Locations: {this.props.entry.common_locations.map(location => <li>{location}</li>)}</ul>:null}</div>: null}
+                    {this.props.category === "equipment" ? <div ><h1>{this.props.entry_show.name} ({this.props.entry_show.category})</h1><h2 hidden={!this.props.entry.attack && !this.props.entry.defense}>Atk: {this.props.entry.attack} Def: {this.props.entry.defense}</h2><h3>Description: {this.props.entry.description}</h3>{this.props.entry.common_locations !== null && this.props.entry.common_locations !== undefined ? <ul>Common Locations: {this.props.entry.common_locations.map(location => <li>{location}</li>)}</ul>:null}</div>: null}
                     {this.props.category === "monsters" ? <div ><h1>{this.props.entry.name} ({this.props.entry.category})</h1>{!this.props.entry.drops || this.props.entry.drops === [] || this.props.entry.drops === undefined || this.props.entry.drops.lenth === 0 ? null : <h3>Drops: {this.props.entry.drops.join(', ')}</h3>}<h3>Description: {this.props.entry.description}</h3>{this.props.entry.common_locations !== null && this.props.entry.common_locations !== undefined ? <ul>Common Locations: {this.props.entry.common_locations.map(location => <li>{location}</li>)}</ul>:null}</div>:null}
                     {this.props.category === "materials" ? <div><h1>{this.props.entry.name} ({this.props.entry.category})</h1><h2 hidden={!this.props.entry.cooking_effect}>Cooking Effect: {this.props.entry.cooking_effect}</h2><h2>Hearts Recovered: {this.props.entry.hearts_recovered}</h2><h3>Description: {this.props.entry.description}</h3>{this.props.entry.common_locations !== null && this.props.entry.common_locations !== undefined ? <ul>Common Locations: {this.props.entry.common_locations.map(location => <li>{location}</li>)}</ul>:null}</div>:null}
                     <div hidden={!this.state.createForm} className="note-form">

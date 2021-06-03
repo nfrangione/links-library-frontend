@@ -259,7 +259,7 @@
 }
 
 .form-container input[type=textarea]{
-  width: 100%;
+  width: 90%;
   margin:12px;
   padding: 12px 20px;
   text-wrap:unrestricted;
