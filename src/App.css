@@ -157,6 +157,10 @@
   font-size: 11pt;
 }
 
+.button-row button:focus {
+  background-color: #fff176;
+}
+
 .show-container{
   margin: 12px;
   overflow-y: auto;

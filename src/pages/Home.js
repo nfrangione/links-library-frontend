@@ -111,10 +111,11 @@ class Home extends React.Component {
         }
         else {
             return <div>
-                <h2>ENTRIES</h2>
+                <h2>DATA ENTRIES</h2>
                 <h3>The Legend of Zelda: Breath of the Wild</h3>
+                <h4>Filtering for: {this.props.categoryFilter}</h4>
                 <div className='button-row'>
-                    <button value='' onClick={(e)=>this.props.handleCategoryFilter(e)}>All Items</button>
+                    <button value='all' onClick={(e)=>this.props.handleCategoryFilter(e)}>All Items</button>
                     <button value='monsters' onClick={(e)=>this.props.handleCategoryFilter(e)}>Monsters</button>
                     <button value='equipment' onClick={(e)=>this.props.handleCategoryFilter(e)}>Equipment</button>
                     <button value='materials' onClick={(e)=>this.props.handleCategoryFilter(e)}>Materials</button>

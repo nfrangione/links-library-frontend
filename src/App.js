@@ -21,7 +21,7 @@ class App extends Component {
     token: null,
     user_notes: [],
     user_entries: [],
-    categoryFilter: '',
+    categoryFilter: 'all',
     searchInput: '',
     searchNotes: '',
     sortBy: ''
@@ -245,7 +245,7 @@ class App extends Component {
       user_notes: [],
       user_entries: [],
       token: null,
-      categoryFilter: '',
+      categoryFilter: 'all',
       searchInput: '',
       searchNotes: '',
       sortBy: '',
@@ -262,7 +262,7 @@ class App extends Component {
         </div>
           <Switch>
             <Route path="/entry_items">
-            {this.state.loggedIn ? <Home entry_items={this.categoryFilteredItems()} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile} handleFilteredSearch={this.handleFilteredSearch} handleCategoryFilter={this.handleCategoryFilter} search={this.state.searchInput}/> : <Redirect to="/" />}
+            {this.state.loggedIn ? <Home entry_items={this.categoryFilteredItems()} token={this.state.token} user={this.state.user} submitUserNote={this.submitUserNote} updateProfile={this.updateProfile} handleFilteredSearch={this.handleFilteredSearch} handleCategoryFilter={this.handleCategoryFilter} search={this.state.searchInput} categoryFilter={this.state.categoryFilter}/> : <Redirect to="/" />}
                 
             </Route>
             
