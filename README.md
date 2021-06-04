@@ -52,12 +52,12 @@ I started the process of deciding a final project knowing that I wanted to do so
     - original_id (int)
 
 ## Technologies Implemented
-### Backend
+### Backend - Ruby on Rails as API
 - JWT Authentication
 - Custom Routes
 - Rails Validations
 - Rest-Client Gem
-### Frontend
+### Frontend - React
 - React-router
 - React-hooks
 - Media-queries
