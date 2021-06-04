@@ -27,17 +27,12 @@ I started the process of deciding a final project knowing that I wanted to do so
 - As a user I can I can sort my notes on my user notes page
 
 ## Models
+![Photo 3](./public/images/Models.jpeg)
 - User:
-  - Associations: 
-    - has_many :user_notes
-    - has_many :entry_items, through: :user_notes
   - Attributes:
     - id (int)
     - username (string)
 - UserNote:
-  - Associations: 
-    - belongs_to :user
-    - belongs_to :entry_item
   - Attributes:
     - id (int)
     - comment (text)
@@ -46,9 +41,6 @@ I started the process of deciding a final project knowing that I wanted to do so
     - username (string)
     - entry_name (string)
 - EntryItem:
-  - Associations: 
-    - has_many :user_notes
-    - has_many :users, through: :user_notes
   - Attributes:
     - id (int)
     - name (string)
