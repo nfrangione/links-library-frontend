@@ -8,6 +8,10 @@ For those of you who don't know, 'The Legend of Zelda: Breath of the Wild'is an 
 ## Why This Project?
 I started the process of deciding a final project knowing that I wanted to do something in relation video-games, as I have always enjoyed playing them. My interest in video-games, and finding a fun API for a game that I really enjoyed, led me to my decision to make an application about the game. My target functionality was decided when I remembered that throughout my time playing the game, I struggled to keep track of all the information I wanted to remember, as the map is ginormous and there are so many things to do. So, I created a program that would allow users to see more info about all the monsters, equipment items, and materials needing for cooking in the game. I also wanted a player to be able to post the information that they found to be relevant for a certain entry, as it would allow players to share experiences and more detailed information they wish they had known earlier. 
 
+## Wireframe
+![Photo 1](./public/images/Wireframe1.jpeg)
+![Photo 2](./public/images/Profile.jpeg)
+
 ## User Statements
 ### Minimum Viable Product (MVP)
 - As a user I can sign-up for an account, or login to my account
