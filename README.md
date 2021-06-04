@@ -24,36 +24,48 @@ I started the process of deciding a final project knowing that I wanted to do so
 
 ## Models
 - User:
- - Associations: 
-  - has_many :user_notes
-  - has_many :entry_items, through: :user_notes
- - Attributes:
-  - id (int)
-  - username (string)
+  - Associations: 
+    - has_many :user_notes
+    - has_many :entry_items, through: :user_notes
+  - Attributes:
+    - id (int)
+    - username (string)
 - UserNote:
- - Associations: 
-  - belongs_to :user
-  - belongs_to :entry_item
- - Attributes:
-  - id (int)
-  - comment (text)
-  - user_id (int)
-  - entry_item_id (int)
-  - username (string)
-  - entry_name (string)
+  - Associations: 
+    - belongs_to :user
+    - belongs_to :entry_item
+  - Attributes:
+    - id (int)
+    - comment (text)
+    - user_id (int)
+    - entry_item_id (int)
+    - username (string)
+    - entry_name (string)
 - EntryItem:
- - Associations: 
-  - has_many :user_notes
-  - has_many :users, through: :user_notes
- - Attributes:
-  - id (int)
-  - name (string)
-  - image (string)
-  - original_id (int)
+  - Associations: 
+    - has_many :user_notes
+    - has_many :users, through: :user_notes
+  - Attributes:
+    - id (int)
+    - name (string)
+    - image (string)
+    - original_id (int)
+
+## Technologies Implemented
+### Backend
+- JWT Authentication
+- Custom Routes
+- Rails Validations
+- Rest-Client Gem
+### Frontend
+- React-router
+- React-hooks
+- Media-queries
 
 ## Extra-Info
 One of my biggest challenges was making the application update with the External API data if an update or dlc were to come out. I was able to achieve this using the rest-client gem to fetch the entry data from my controller-index method.
 
 ## Next Steps
 - Implementing a user show route that takes you to another user's profile page with all their notes
+- Adding functionality to click on a note in a user's profile and being brough to the show page of that note
 - Add a likes model in my backend so that I can implement a feature that allows users to like notes of another user
